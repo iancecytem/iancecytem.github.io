@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse BLUEY BYTE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente para el formulario */
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px); /* Efecto de desenfoque */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        input[type="date"],
+        textarea,
+        select {
+            width: calc(50% - 10px);
+            padding: 10px;
+            margin: 10px 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.5); /* Fondo semitransparente */
+            color: #333; /* Color del texto */
+        }
+
+        input[type="text"]::placeholder,
+        input[type="email"]::placeholder,
+        textarea::placeholder {
+            color: #999; /* Color del placeholder */
+        }
+
+        input[type="submit"] {
+            background-color: #edcc6f; /* Color de fondo del botón */
+            color: black; /* Color del texto del botón */
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        select.small-select {
+            width: calc(10% - 5px);
+        }
+
+        input[type="number"] {
+            height: calc(100% - 85px);
+        }
+
+        input[type="submit"]:hover {
+            background-color: #88cafc; /* Color de fondo del botón al pasar el ratón */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #404066;
+            overflow: hidden;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        nav ul li {
+            float: right;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: #edcc6f;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        #captcha_image {
+            width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="inicio de sesion.html">Iniciar Sesion</a></li>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="contacto.html">Contactanos</a></li>
+        </ul>
+    </nav>
+    <form action="registrardatos.php" method="post">
+        <h1>REGISTRARSE</h1>
+        <h3>CREAR UNA CUENTA</h3>
+        <hr color="yellow">
+        <h1>DATOS PERSONALES</h1>
+        <input type="text" name="nom" placeholder="Nombre"><br>
+        <input type="text" name="ape" placeholder="Apellidos"><br>
+        <label for="fecha">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha" name="fecha"><br>
+        <select name="telcod" class="small-select">
+            <option value="1">+52</option>
+            <option value="2">+53</option>
+            <option value="3">+54</option>
+            <option value="4">+55</option>
+            <option value="5">+56</option>
+            <option value="6">+57</option>
+            <option value="7">+58</option>
+            <option value="8">+59</option>
+            <option value="9">+60</option>
+            <option value="10">+61</option>
+        </select>
+        <input type="number" name="num" placeholder="Telefono principal"><br>
+        <select name="teladic" class="small-select">
+            <option value="1">+52</option>
+            <option value="2">+53</option>
+            <option value="3">+54</option>
+            <option value="4">+55</option>
+            <option value="5">+56</option>
+            <option value="6">+57</option>
+            <option value="7">+58</option>
+            <option value="8">+59</option>
+            <option value="9">+60</option>
+            <option value="10">+61</option>
+        </select>
+        <input type="number" name="num1" placeholder="Telefono adicional"><br>
+        <hr color="yellow">
+        <h1>DATOS DE USUARIO</h1>
+        <input type="email" name="correo" placeholder="Correo electronico"><br>
+        <input type="password" name="con" placeholder="Contraseña"><br>
+        <input type="password" name="cont" placeholder="Confirmar Contraseña"><br>
+        <hr color="yellow">
+        <h3>Direccion</h3>
+        <input type="text" name="calle" placeholder="Nombre de la calle"><br>
+        <input type="text" name="col" placeholder="Nombre de la Colonia"><br>
+        <input type="text" name="mun" placeholder="Nombre del municipio"><br>
+        <input type="text" name="est" placeholder="Nombre del estado"><br>
+        <select name="pais">
+            <option value="1">Mexico</option>
+            <option value="2">España</option>
+            <option value="3">Guatemala</option>
+            <option value="4">Honduras</option>
+            <option value="5">Venezuela</option>
+            <option value="6">Colombia</option>
+            <option value="7">Cuba</option>
+            <option value="8">Bolivia</option>
+            <option value="9">Peru</option>
+            <option value="10">Ecuador</option>
+        </select><br>
+        <hr color="yellow">
+        <label for="captcha_input">Ingresa el texto que ves en la imagen:</label><br>
+        <img id="captcha_image" src="capchat.jpeg" alt="CAPTCHA Image"><br>
+        <input type="text" id="captcha_input" name="captcha_input" required><br>
+        <input type="submit" value="Verificar"><br>
+        <hr color="yellow">
+        <input type="submit" value="Atras">
+        <input type="submit" value="Enviar">
+        <hr color="yellow">
+    </form>
+</body>
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabletas BLUEY BYTE </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #404066;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: flex-end;
+        }
+        nav ul li {
+            margin-left: 10px;
+        }
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: #edcc6f;
+            text-decoration: none;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .phone {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+        .phone img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .color-options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .color-options div {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+        .phone .price {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .phone .buy-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .phone .more-info {
+            text-decoration: none;
+            color: #007bff;
+            cursor: pointer;
+        }
+        .phone .info-paragraph {
+            display: none;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .cart-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            width: 300px;
+            height: 100%;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .cart-container.open {
+            transform: translateX(0);
+        }
+        .cart-item {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .cart-total {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .cart-buttons {
+            margin-top: 20px;
+        }
+        .cart-buttons button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart-buttons button:first-child {
+            background-color: #007bff;
+            margin-right: 10px;
+        }
+        .cart-buttons button:hover {
+            background-color: #333;
+        }
+        #cart-toggle-btn {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 15px 30px; /* Ajusta el padding para hacer el botón más grande */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Ajusta el tamaño de la fuente */
+}
+
+#cart-toggle-btn:hover {
+    background-color: #333;
+}
+nav {
+    background-color: #404066;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#cart-toggle-btn {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 15px 30px; /* Ajusta el padding para hacer el botón más grande */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Ajusta el tamaño de la fuente */
+}
+
+#cart-toggle-btn:hover {
+    background-color: #333;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 10px;
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: #edcc6f;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <button id="cart-toggle-btn" onclick="toggleCart()">Ver Carrito</button>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="registro.html">Regístrate</a></li>
+                <li><a href="inicio_sesion.html">Iniciar Sesión</a></li>
+                <li><a href="contacto.html">Contáctanos</a></li>
+                <li><a href="index.html">Inicio</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="phone">
+            <h2>Galaxy Tab S9 Ultra</h2>
+            <img src="galaxytabs9ultra.avif" alt="Galaxy Tab S9 Ultra">
+            <div class="color-options">
+                <div style="background-color: #d4d4d2;"></div>
+                <div style="background-color: #1d1d1f;"></div>
+                <div style="background-color: #f2f2f2;"></div>
+                <div style="background-color: #48484a;"></div>
+            </div>
+            <div class="price">$24,999.00 MXN</div>
+            <a href="#" class="buy-btn" onclick="addToCart('Galaxy Tab S9 Ultra', 24999)">Comprar</a>
+            <div class="more-info" onclick="toggleInfo('info1')">Más información ></div>
+            <div id="info1" class="info-paragraph">
+                <h4>Características de la Galaxy Tab S9 Ultra</h4>
+
+<h4>Pantalla:</h4>
+<p>- Tamaño: Probablemente alrededor de 14.6 
+pulgadas, según las especificaciones habituales de la serie Ultra.<br>
+- Tecnología: Panel Super AMOLED con resolución muy 
+alta, típicamente superior a 2560 x 1600 píxeles.<br>
+- Frecuencia de actualización: 120Hz o superior para una experiencia fluida.</p>
+
+<p> <h4>Procesador:</h4>
+- Probablemente un chipset Snapdragon de última 
+generación o un procesador Exynos, dependiendo del mercado.</p>
+
+<p><h4>Memoria RAM:</h4><br>
+- 16 GB de RAM o posiblemente más, para un rendimiento multitarea eficiente y rápido.</p>
+
+<p><h4>Almacenamiento:</h4><br>
+- 1TB de almacenamiento interno, que es extremadamente amplio y 
+permite almacenar una gran cantidad de aplicaciones, archivos multimedia y documentos.</p>
+
+<p><h4>Sistema Operativo:</h4><br>
+- Android 12 con la interfaz personalizada de Samsung, que incluye 
+características específicas como Samsung DeX para una experiencia de escritorio.</p>
+
+<p><h4>Cámaras:</h4><br>
+- Trasera: Configuración probablemente avanzada con múltiples sensores de alta resolución.<br>
+- Frontal: Cámara para selfies de alta calidad, útil para videollamadas y 
+fotografía ocasional.</p>
+
+<p><h4>Batería:</h4><br>
+- Una batería de gran capacidad que permite una larga duración, 
+adecuada para un uso intensivo durante todo el día.</p>
+
+<p><h4>>Conectividad:</h4><br>
+- WiFi de última generación, posiblemente WiFi 6E para velocidades rápidas 
+y conexión estable.<br>
+- Bluetooth 5.2 para conectar accesorios y dispositivos externos.</p>
+
+<p><h4>Diseño:</h4><br>
+- Construcción premium con materiales de alta calidad, típicamente delgada 
+y ligera para facilitar su transporte y uso prolongado.</p>
+
+<p><h4>Funcionalidades adicionales:</h4><br>
+- Incluir aquí cualquier otra característica relevante que destaque en este modelo.</p>
+
+
+            </div>
+        </div>
+        <div class="phone">
+            <h2>iPad Pro</h2>
+            <img src="ipadpro1.jpeg" alt="iPad Pro">
+            <div class="color-options">
+                <div style="background-color: #d4d4d2;"></div>
+                <div style="background-color: #1d1d1f;"></div>
+                <div style="background-color: #f2f2f2;"></div>
+                <div style="background-color: #48484a;"></div>
+            </div>
+            <div class="price">$53,799.00 MXN</div>
+            <a href="#" class="buy-btn" onclick="addToCart('iPad Pro', 53799)">Comprar</a>
+            <div class="more-info" onclick="toggleInfo('info2')">Más información ></div>
+            <div id="info2" class="info-paragraph">
+                <h4>Pantalla</h4>
+<p>Pantalla Liquid Retina de 13 pulgadas con tecnología ProMotion.</p>
+<p>Resolución de 2732 x 2048 píxeles.</p>
+<p>True Tone y amplia gama cromática (P3).</p>
+
+<h4>Procesador</h4>
+<p>Chip M4 .</p>
+<p>Coprocesador M12 integrado.</p>
+
+<h4>Almacenamiento</h4>
+<p>Opciones de almacenamiento interno: 128 GB, 256 GB, 512 GB y 1 TB.</p>
+
+<h4>Cámara</h4>
+<p>Sistema de cámara dual:</p>
+<ul>
+  <li>Cámara principal de 12 MP (gran angular).</li>
+  <li>Cámara ultra gran angular de 10 MP.</li>
+</ul>
+<p>Escáner LiDAR para mejorar la percepción de profundidad y AR.</p>
+
+<h4>Grabación de Video</h4>
+<p>Grabación de video 4K a 24 fps, 30 fps o 60 fps.</p>
+<p>Grabación de video en cámara lenta en 1080p a 120 fps o 240 fps.</p>
+
+<h4>Cámara Frontal</h4>
+<p>Cámara FaceTime HD de 7 MP con TrueDepth.</p>
+<p>Modo Retrato, iluminación de Retratos y Animoji.</p>
+
+<h4>Conectividad</h4>
+<p>Wi-Fi 802.11ax (Wi-Fi 7).</p>
+<p>Tecnología Bluetooth 5.3.</p>
+<p>Opción de modelos con Wi-Fi + Cellular.</p>
+
+<h4>Sistema Operativo</h4>
+<p>iPadOS, basado en iOS, optimizado para la experiencia en tabletas.</p>
+
+<h4>Batería</h4>
+<p>Hasta 10 horas de navegación por internet a través de Wi-Fi o visualización de videos.</p>
+
+<h4>Otros</h4>
+<p>USB-C para carga y conexión de accesorios.</p>
+<p>Compatible con el Apple Pencil (2.ª generación) y el Magic Keyboard.</p>
+
+                
+            </div>
+        </div>
+        <div class="phone">
+            <h2>iPad Air</h2>
+            <img src="ipadair.jpeg" alt="iPad Air">
+            <div class="color-options">
+                <div style="background-color: #f3c1c6;"></div>
+                <div style="background-color: #eae4d8;"></div>
+                <div style="background-color: #dfe4ea;"></div>
+                <div style="background-color: #e8e8e8;"></div>
+                <div style="background-color: #1d1d1f;"></div>
+            </div>
+            <div class="price">$28,799.00 MXN</div>
+            <a href="#" class="buy-btn" onclick="addToCart('iPad Air', 28799)">Comprar</a>
+            <div class="more-info" onclick="toggleInfo('info3')">Más información ></div>
+            <div id="info3" class="info-paragraph">
+                <h4>Pantalla</h4>
+<p>Pantalla Liquid Retina XDR de 12.9 pulgadas con tecnología Mini-LED.</p>
+<p>Resolución de 2732 x 2048 píxeles.</p>
+
+<h4>Procesador</h4>
+<p>Chip M2 de Apple </p>
+
+<h4>Almacenamiento</h4>
+<p>Opciones de almacenamiento interno: 128 GB, 256 GB, 512 GB, 1 TB y 2 TB.</p>
+
+<h4>Cámara</h4>
+<p>Sistema de cámara dual:</p>
+<ul>
+  <li>Cámara principal de 12 MP (gran angular).</li>
+  <li>Cámara ultra gran angular de 10 MP.</li>
+</ul>
+<p>Escáner LiDAR para mejorar la percepción de profundidad y AR.</p>
+
+<h4>Cámara Frontal</h4>
+<p>Cámara FaceTime HD de 12 MP con Ultra Wide.</p>
+
+<h4>Conectividad</h4>
+<p>Wi-Fi 6 (802.11ax) y 5G en modelos compatibles.</p>
+<p>Tecnología Bluetooth 5.0.</p>
+
+<h4>Sistema Operativo</h4>
+<p>iPadOS, optimizado para la experiencia en tabletas.</p>
+
+<h4>Batería</h4>
+<p>Hasta 10 horas de navegación por internet a través de Wi-Fi o visualización de videos.</p>
+
+<h4>Otros</h4>
+<p>Conector USB-C para carga rápida y conexión de accesorios.</p>
+<p>Compatible con el Apple Pencil (2.ª generación) y el Magic Keyboard.</p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Carrito de compras -->
+    <div id="cart-container" class="cart-container">
+        <h2>Carrito de Compras</h2>
+        <!-- Aquí se mostrarán los productos del carrito -->
+    </div>
+
+    <script>
+        // Array para almacenar los productos en el carrito
+        let cart = [];
+
+        // Función para agregar un producto al carrito
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            updateCart();
+            alert(`¡${productName} añadido al carrito!`);
+        }
+
+        // Función para actualizar la visualización del carrito
+        function updateCart() {
+            const cartContainer = document.getElementById('cart-container');
+            cartContainer.innerHTML = ''; // Limpiar contenido anterior del carrito
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = '<p>El carrito está vacío.</p>';
+            } else {
+                let total = 0;
+                cart.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+                    cartItem.innerHTML = `<strong>${item.name}</strong> - ${item.price} MXN`;
+                    cartContainer.appendChild(cartItem);
+                    total += item.price;
+                });
+
+                const totalElement = document.createElement('div');
+                totalElement.classList.add('cart-total');
+                totalElement.textContent = `Total: ${total} MXN`;
+                cartContainer.appendChild(totalElement);
+
+                const cartButtons = document.createElement('div');
+                cartButtons.classList.add('cart-buttons');
+                cartButtons.innerHTML = `<button onclick="clearCart()">Vaciar Carrito</button>
+                                         <button onclick="closeCart()">Cerrar</button>`;
+                cartContainer.appendChild(cartButtons);
+            }
+
+            // Abrir el carrito
+            cartContainer.classList.add('open');
+        }
+
+        // Función para vaciar el carrito
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+
+        // Función para cerrar el carrito
+        function closeCart() {
+            const cartContainer = document.getElementById('cart-container');
+            cartContainer.classList.remove('open');
+        }
+
+        // Función para mostrar u ocultar la información adicional
+        function toggleInfo(infoId) {
+            const infoParagraph = document.getElementById(infoId);
+            infoParagraph.style.display = infoParagraph.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Función para mostrar u ocultar el carrito
+        function toggleCart() {
+            const cartContainer = document.getElementById('cart-container');
+            cartContainer.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

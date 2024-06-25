@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celulares BLUEY BYTE </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #404066;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: flex-end;
+        }
+        nav ul li {
+            margin-left: 10px;
+        }
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: #edcc6f;
+            text-decoration: none;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .phone {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+        .phone img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .color-options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .color-options div {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+        .phone .price {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .phone .buy-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .phone .more-info {
+            text-decoration: none;
+            color: #007bff;
+            cursor: pointer;
+        }
+        .phone .info-paragraph {
+            display: none;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .cart-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            width: 300px;
+            height: 100%;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .cart-container.open {
+            transform: translateX(0);
+        }
+        .cart-item {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .cart-total {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .cart-buttons {
+            margin-top: 20px;
+        }
+        .cart-buttons button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart-buttons button:first-child {
+            background-color: #007bff;
+            margin-right: 10px;
+        }
+        .cart-buttons button:hover {
+            background-color: #333;
+        }
+        #cart-toggle-btn {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 15px 30px; /* Ajusta el padding para hacer el botón más grande */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Ajusta el tamaño de la fuente */
+}
+
+#cart-toggle-btn:hover {
+    background-color: #333;
+}
+nav {
+    background-color: #404066;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#cart-toggle-btn {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 15px 30px; /* Ajusta el padding para hacer el botón más grande */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Ajusta el tamaño de la fuente */
+}
+
+#cart-toggle-btn:hover {
+    background-color: #333;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 10px;
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: #edcc6f;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <button id="cart-toggle-btn" onclick="toggleCart()">Ver Carrito</button>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="registro.html">Regístrate</a></li>
+                <li><a href="inicio_sesion.html">Iniciar Sesión</a></li>
+                <li><a href="contacto.html">Contáctanos</a></li>
+                <li><a href="index.html">Inicio</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="phone">
+            <h2>iPhone 15 Pro Max</h2>
+            <img src="iphone15promaxtodos.jpeg" alt="iPhone 15 Pro Max">
+            <div class="color-options">
+                <div style="background-color: #d4d4d2;"></div>
+                <div style="background-color: #1d1d1f;"></div>
+                <div style="background-color: #f2f2f2;"></div>
+                <div style="background-color: #48484a;"></div>
+            </div>
+            <div class="price">$37,999.00 MXN</div>
+            <a href="#" class="buy-btn" onclick="addToCart('iPhone 15 Pro Max', 37999)">Comprar</a>
+            <div class="more-info" onclick="toggleInfo('info1')">Más información ></div>
+            <div id="info1" class="info-paragraph">
+                <p>El iPhone 15 Pro Max es el modelo de alta gama de la línea iPhone 15 de Apple.</p>
+                <h4>Pantalla:</h4>
+                <p>Tamaño: 6.7 pulgadas.<br>
+                Tipo: Super Retina XDR OLED.<br>
+                Resolución: 2796 x 1290 píxeles.<br>
+                ProMotion, HDR10, y Dolby Vision.</p>
+                <h4>Procesador:</h4>
+                <p>Chip A17 Pro.<br>
+                Tecnología de 3 nm para mayor eficiencia y rendimiento.</p>
+                <h4>Memoria:</h4>
+                <p>Almacenamiento: opciones de 128 GB, 256 GB, 512 GB y 1 TB.<br>
+                RAM: 8 GB.</p>
+                <h4>Cámara:</h4>
+                <p>Sistema de cámaras traseras triple:<br>
+                Principal: 48 MP con sensor mejorado.<br>
+                Ultra gran angular: 12 MP.<br>
+                Teleobjetivo: 12 MP con zoom óptico 5x.<br>
+                Cámara frontal: 12 MP con soporte para Face ID.</p>
+                <h4>Batería:</h4>
+                <p>Autonomía: hasta 29 horas de reproducción de video.<br>
+                Carga rápida y carga inalámbrica MagSafe.</p>
+                <h4>Software:</h4>
+                <p>iOS 17, con nuevas características de personalización y mejoras en privacidad.</p>
+                <h4>Conectividad:</h4>
+                <p>5G.<br>
+                Wi-Fi 6E.<br>
+                Bluetooth 5.3.<br>
+                USB-C (por primera vez en la línea iPhone).</p>
+                <h4>Construcción y Diseño:</h4>
+                <p>Material: marco de titanio, vidrio frontal y trasero Ceramic Shield.<br>
+                Resistencia al agua y al polvo: clasificación IP68.<br>
+                Colores disponibles: Negro espacial, azul claro, blanco plateado y titanio natural.</p>
+            </div>
+        </div>
+        <div class="phone">
+            <h2>Samsung Galaxy S24 Ultra</h2>
+            <img src="galaxys24ultra.webp" alt="Samsung Galaxy S24 Ultra">
+            <div class="color-options">
+                <div style="background-color: #d4d4d2;"></div>
+                <div style="background-color: #1d1d1f;"></div>
+                <div style="background-color: #f2f2f2;"></div>
+                <div style="background-color: #48484a;"></div>
+            </div>
+            <div class="price">$33,999.00 MXN</div>
+            <a href="#" class="buy-btn" onclick="addToCart('Samsung Galaxy S24 Ultra', 33999)">Comprar</a>
+            <div class="more-info" onclick="toggleInfo('info2')">Más información ></div>
+            <div id="info2" class="info-paragraph">
+                <p>El Samsung Galaxy S24 Ultra es uno de los dispositivos insignia de Samsung con la mejor pantalla del mercado.</p>
+                <h4>Pantalla:</h4>
+                <p>Tamaño: 6.8 pulgadas.<br>
+                Tipo: Dynamic AMOLED 2X.<br>
+                Resolución: 3200 x 1440 píxeles.<br>
+                Tasa de refresco de 120Hz, HDR10+.y Dolby Vision +</p>
+                <h4>Procesador:</h4>
+                <p>Exynos 2400 (mercados selectos) / Snapdragon 8 Gen 3 (EE.UU. y otros mercados).</p>
+                <h4>Memoria:</h4>
+                <p>Almacenamiento: opciones de 256 GB, 512 GB y 1 TB.<br>
+                RAM: 12 GB o 16 GB.</p>
+                <h4>Cámara:</h4>
+                <p>Sistema de cámaras traseras cuádruple:<br>
+                Principal: 200 MP.<br>
+                Ultra gran angular: 12 MP.<br>
+                Teleobjetivo: 10 MP con zoom óptico 10x.<br>
+                Teleobjetivo: 10 MP con zoom óptico 3x.<br>
+                Cámara frontal: 40 MP.</p>
+                <h4>Batería:</h4>
+                <p>5000 mAh.<br>
+                Carga rápida de 45W, carga inalámbrica y carga inalámbrica inversa.</p>
+                <h4>Software:</h4>
+                <p>Android 14 con interfaz One UI 6.1.</p>
+                <h4>Conectividad:</h4>
+                <p>5G.<br>
+                Wi-Fi 7.<br>
+                Bluetooth 5.3.<br>
+                USB-C.</p>
+                <h4>Construcción y Diseño:</h4>
+                <p>Material: marco de aluminio, vidrio Gorilla Glass Victus 2.<br>
+                Resistencia al agua y al polvo: clasificación IP68.<br>
+                Colores disponibles: Phantom Black, Phantom Silver, Phantom Blue, Phantom Green.</p>
+            </div>
+        </div>
+        <div class="phone">
+            <h2>Samsung Galaxy Z Fold5</h2>
+            <img src="galaxyzfold5.jpeg" alt="Samsung Galaxy Z Fold5">
+            <div class="color-options">
+                <div style="background-color: #f3c1c6;"></div>
+                <div style="background-color: #eae4d8;"></div>
+                <div style="background-color: #dfe4ea;"></div>
+                <div style="background-color: #e8e8e8;"></div>
+                <div style="background-color: #1d1d1f;"></div>
+            </div>
+            <div class="price">$47,999.00 MXN</div>
+            <a href="#" class="buy-btn" onclick="addToCart('Samsung Galaxy Z Fold5', 47999)">Comprar</a>
+            <div class="more-info" onclick="toggleInfo('info3')">Más información ></div>
+            <div id="info3" class="info-paragraph">
+                <p>El Samsung Galaxy Z Fold5 es un dispositivo plegable de alta gama.</p>
+                <h4>Pantalla:</h4>
+                <p>Pantalla principal: 7.6 pulgadas Dynamic AMOLED 2X, 2208 x 1768 píxeles, 120Hz.<br>
+                Pantalla externa: 6.2 pulgadas Super AMOLED, 2316 x 904 píxeles, 120Hz.<br>
+                HDR10, y Dolby Vision.</p>
+                <h4>Procesador:</h4>
+                <p>Qualcomm Snapdragon 8+ Gen 2.</p>
+                <h4>Memoria:</h4>
+                <p>RAM: 12 GB.<br>
+                Almacenamiento interno: opciones de 256 GB, 512 GB y 1 TB.</p>
+                <h4>Cámara:</h4>
+                <p>Trasera triple:<br>
+                Principal de 50 MP.<br>
+                Ultra gran angular de 12 MP.<br>
+                Teleobjetivo de 10 MP con zoom óptico 3x.<br>
+                Frontal (pantalla principal): 4 MP (debajo de la pantalla).<br>
+                Frontal (pantalla externa): 10 MP.</p>
+                <h4>Batería:</h4>
+                <p>4400 mAh con carga rápida de 25W, carga inalámbrica y carga inalámbrica inversa.</p>
+                <h4>Software:</h4>
+                <p>Android 14 con interfaz One UI 6.1.</p>
+                <h4>Conectividad:</h4>
+                <p>5G, Wi-Fi 6E, Bluetooth 5.3, USB-C.</p>
+                <h4>Otras características:</h4>
+                <p>Resistencia al agua y polvo IPX8.<br>
+                Lector de huellas dactilares lateral.<br>
+                Compatibilidad con S Pen (no integrado).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carrito de compras -->
+    <div id="cart-container" class="cart-container">
+        <h2>Carrito de Compras</h2>
+        <!-- Aquí se mostrarán los productos del carrito -->
+    </div>
+
+    <script>
+        // Array para almacenar los productos en el carrito
+        let cart = [];
+
+        // Función para agregar un producto al carrito
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            updateCart();
+            alert(`¡${productName} añadido al carrito!`);
+        }
+
+        // Función para actualizar la visualización del carrito
+        function updateCart() {
+            const cartContainer = document.getElementById('cart-container');
+            cartContainer.innerHTML = ''; // Limpiar contenido anterior del carrito
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = '<p>El carrito está vacío.</p>';
+            } else {
+                let total = 0;
+                cart.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+                    cartItem.innerHTML = `<strong>${item.name}</strong> - ${item.price} MXN`;
+                    cartContainer.appendChild(cartItem);
+                    total += item.price;
+                });
+
+                const totalElement = document.createElement('div');
+                totalElement.classList.add('cart-total');
+                totalElement.textContent = `Total: ${total} MXN`;
+                cartContainer.appendChild(totalElement);
+
+                const cartButtons = document.createElement('div');
+                cartButtons.classList.add('cart-buttons');
+                cartButtons.innerHTML = `<button onclick="clearCart()">Vaciar Carrito</button>
+                                         <button onclick="closeCart()">Cerrar</button>`;
+                cartContainer.appendChild(cartButtons);
+            }
+
+            // Abrir el carrito
+            cartContainer.classList.add('open');
+        }
+
+        // Función para vaciar el carrito
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+
+        // Función para cerrar el carrito
+        function closeCart() {
+            const cartContainer = document.getElementById('cart-container');
+            cartContainer.classList.remove('open');
+        }
+
+        // Función para mostrar u ocultar la información adicional
+        function toggleInfo(infoId) {
+            const infoParagraph = document.getElementById(infoId);
+            infoParagraph.style.display = infoParagraph.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Función para mostrar u ocultar el carrito
+        function toggleCart() {
+            const cartContainer = document.getElementById('cart-container');
+            cartContainer.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

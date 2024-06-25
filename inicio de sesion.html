@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Inicio de sesion Bluey Byte</title>
+  <style>
+    body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente para el formulario */
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px); /* Efecto de desenfoque */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        input[type="date"],
+        textarea,
+        select {
+            width: calc(50% - 10px);
+            padding: 10px;
+            margin: 10px 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.5); /* Fondo semitransparente */
+            color: #333; /* Color del texto */
+        }
+
+        input[type="text"]::placeholder,
+        input[type="email"]::placeholder,
+        textarea::placeholder {
+            color: #999; /* Color del placeholder */
+        }
+
+        input[type="submit"] {
+            background-color: #edcc6f; /* Color de fondo del botón */
+            color: black; /* Color del texto del botón */
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        select.small-select {
+            width: calc(10% - 5px);
+        }
+
+        input[type="number"] {
+            height: calc(100% - 85px);
+        }
+
+        input[type="submit"]:hover {
+            background-color: #88cafc; /* Color de fondo del botón al pasar el ratón */
+        }
+    .links {
+      margin-top: 20px;
+    }
+
+    .links a {
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #404066;
+    overflow: hidden;
+}
+nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #404066;
+            overflow: hidden;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        nav ul li {
+            float: right;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: #edcc6f;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+  </style>
+</head>
+<body>
+  <center><nav>
+    <ul>
+        <li><a href="registro.html">Regístrase</a></li>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="contacto.html">Contactanos</a></li>
+    </ul>
+</nav></center>
+
+  <h1><center>Bluey Byte</center></h1><br>
+  <center> <img src="bluey.jpeg" alt="center" height="200" width="200">
+  <form action="<form action="id-usuario.php" method="post">" method="post">
+   Correo electrónico o usuario:
+    <input type="email" id="nombre" name="Correo" required>
+   <br>Contraseña: 
+    <input type="password" id="contra" name="pass" required>
+    <input type="submit" value="Enviar">
+    <br>
+   <p>   
+    <a href="registro.html">No tienes una cuenta Regístrate</a>
+   </p>   
+    </div>
+  </form>
+</center>
+</body>
+</html>
